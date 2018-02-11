@@ -67,7 +67,7 @@ class Tasks extends Component {
                 {
                     this.state.currentTask.showModal &&
                     (
-                        <form action="" className="new-task-modal">
+                        <form action="#" className="new-task-modal">
                             <label>Title</label>
                             <input required
                                 type="text"
@@ -110,12 +110,13 @@ class Tasks extends Component {
                             </span>
                             </div>
 
-                            <button id="add_task"
-                                onClick={() => this.addOrUpdateTask(
+                            <input type="submit"
+                                id="add_task"
+                                value="Save"
+                                onSubmit={event => this.addOrUpdateTask(
+                                    event,
                                     this.state.currentTask.listType,
-                                    this.state.currentTask.index)}>
-                                Save
-                            </button>
+                                    this.state.currentTask.index)} />
                         </form>
                     )
                 }
@@ -196,11 +197,15 @@ class Tasks extends Component {
     /**
      * @function
      * @desc Add/Update an existing task
+     * @param {Object} event Event object
      * @param {String} listType Selected list name
      * @param {Number} index Task identifier in the list
      * @returns none
      */
-    addOrUpdateTask = (listType = 'todo', index = null) => {
+    addOrUpdateTask = (event, listType = 'todo', index = null) => {
+        // Prevent form submission
+        event.preventDefault();
+
         let list = this.state[listType];
 
         if (index === null) {
