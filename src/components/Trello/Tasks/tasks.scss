@@ -1,0 +1,61 @@
+.tasks {
+    height: 85%;
+    width: 80%;
+    display: flex;
+    margin: 0 auto;
+    padding: 1em;
+    .mask {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        top: 3.5em;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    .new-task-modal {
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        z-index: 2;
+        top: 50%;
+        left: 50%;
+        height: 18em;
+        width: 25em;
+        padding: 2em;
+        background-color: #e8e8e8;
+        border-radius: 10px;
+        border: 1px solid #888888;
+        transform: translate(-50%, -50%);
+        label {
+            margin-bottom: .5em;
+        }
+        input[type="text"] {
+            font-size: 1.2em;
+            margin-bottom: 2em;
+        }
+        textarea {
+            height: 6em;
+            line-height: 2;
+            margin-bottom: 2em;
+        }
+        .priority {
+            margin-bottom: 1em;
+            display: flex;
+            span {
+                flex: 1;
+            }
+        }
+        #add_task {
+            background-color: #43A047;
+            border: none;
+            outline: none;
+            padding: .5em 1em;
+            color: #FFFFFF;
+            border-radius: 5px;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}
