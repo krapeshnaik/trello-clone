@@ -9,7 +9,7 @@
 ## Install
 
 ```bash
-git clone git@github.com:KrapeshNaik/trello-clone.git
+git clone https://github.com/KrapeshNaik/trello-clone.git
 ```
 
 ## Usage
