@@ -1,13 +1,13 @@
 {
-  "name": "nutanix-trello-clone",
+  "name": "trello-clone",
   "version": "1.0.0",
-  "description": "Simple agile board like Trello",
+  "description": "Trello Clone",
   "scripts": {
     "start": "node server.js"
   },
-  "repository": "https://github.com/noahlotzer/react-simple-boilerplate.git",
+  "repository": "https://github.com/KrapeshNaik/trello-clone.git",
   "keywords": [
-    "nutanix",
+    "trello",
     "trello-clone"
   ],
   "author": "Krapesh Naik <krapeshnaik@gmail.com>",
