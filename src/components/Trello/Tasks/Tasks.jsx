@@ -67,17 +67,15 @@ class Tasks extends Component {
                 {
                     this.state.currentTask.showModal &&
                     (
-                        <form action="#" className="new-task-modal">
+                        <div action="#" className="new-task-modal">
                             <label>Title</label>
-                            <input required
-                                type="text"
+                            <input type="text"
                                 name="title"
                                 value={this.state.currentTask.title}
                                 onChange={e => this.readInput(e, 'title')} />
 
                             <label>Description</label>
-                            <textarea required
-                                type="text"
+                            <textarea type="text"
                                 name="description"
                                 value={this.state.currentTask.description}
                                 onChange={e => this.readInput(e, 'description')}>
@@ -110,14 +108,14 @@ class Tasks extends Component {
                             </span>
                             </div>
 
-                            <input type="submit"
-                                id="add_task"
-                                value="Save"
-                                onSubmit={event => this.addOrUpdateTask(
+                            <button id="add_task"
+                                onClick={event => this.addOrUpdateTask(
                                     event,
                                     this.state.currentTask.listType,
-                                    this.state.currentTask.index)} />
-                        </form>
+                                    this.state.currentTask.index)}>
+                                Save
+                            </button>
+                        </div>
                     )
                 }
 
@@ -189,9 +187,7 @@ class Tasks extends Component {
                 ...this.state.currentTask,
                 [target]: e.target.value
             }
-        }, () => {
-            console.log(this.state);
-        })
+        });
     }
 
     /**
@@ -209,6 +205,12 @@ class Tasks extends Component {
         let list = this.state[listType];
 
         if (index === null) {
+            if (this.state.currentTask.title === '' ||
+                this.state.currentTask.description === '') {
+                alert('Please fill all the fields');
+                return;
+            }
+
             // Adding new task
             list.push({
                 title: this.state.currentTask.title,
