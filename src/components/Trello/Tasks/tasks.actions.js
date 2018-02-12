@@ -10,12 +10,17 @@ import idbKeyval from 'idb-keyval';
  * @returns {Object} new state
  */
 export const moveTask = (taskId, currentList, newList, state) => {
+    // Dropped a task away from a valid target
+    if (!newList)
+        return;
+
     // Remove from current list
     let poppedState = state[currentList].splice(taskId, 1);
 
     // Move to new list
     state[newList].push(poppedState[0]);
 
+    // Updated state
     return state;
 };
 
@@ -29,6 +34,7 @@ export const moveTask = (taskId, currentList, newList, state) => {
  * @returns {Object} new state
  */
 export const reOrderTask = (direction, listType, index, state) => {
+    // Current list
     let list = state[listType];
 
     if (direction === 'up') {
@@ -105,4 +111,22 @@ export const updateTrelloStore = data => {
         .catch(err => {
             alert('update failed');
         })
+}
+
+/**
+ * @function
+ * @desc Delete everything
+ * @param none
+ * @returns {Boolean} flag
+ */
+export const clearBoard = () => {
+    var input = confirm("Are you sure you want to delete all tasks?");
+
+    if (input) {
+        // Clear idb store
+        idbKeyval.clear();
+        return true;
+    }
+
+    return false;
 }

@@ -7,6 +7,10 @@ import Header from './Header/Header.jsx';
 import Tasks from './Tasks/Tasks.jsx';
 import Footer from './Footer/Footer.jsx';
 
+/**
+ * Represents Application container
+ * @class
+ */
 class App extends Component {
     render() {
         return (

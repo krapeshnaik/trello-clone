@@ -3,6 +3,10 @@ import React, { PureComponent } from 'react';
 // Component styles
 require('./card.scss');
 
+/**
+ * Represents a Card
+ * @class
+ */
 class Card extends PureComponent {
     render() {
         return (
@@ -13,6 +17,8 @@ class Card extends PureComponent {
                 onDragStart={this.props.drag}>
                 <div className="title">{this.props.task.title}</div>
                 <div className="description">{this.props.task.description}</div>
+
+                {/* Card actions */}
                 <div className="actions">
                     <div className="re-order">
                         <span className="up"

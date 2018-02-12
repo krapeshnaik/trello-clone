@@ -6,10 +6,15 @@ require('./list.scss');
 // Components
 import Card from '../Card/Card.jsx';
 
+/**
+ * Represents a category of task
+ * @class
+ */
 class List extends Component {
     render() {
         let listHTML = null;
 
+        // Generate cards for a list
         listHTML = this.props.tasks.map((task, index) => {
             return (
                 <Card key={index}
@@ -35,6 +40,7 @@ class List extends Component {
 
                     {listHTML}
 
+                    {/* Render 'add task' button if enabled */}
                     {
                         this.props.defaultAction &&
                         <div className="add-task-btn">
@@ -49,4 +55,5 @@ class List extends Component {
         );
     }
 }
+
 export default List;

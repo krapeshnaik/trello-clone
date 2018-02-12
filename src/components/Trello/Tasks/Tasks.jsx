@@ -10,7 +10,8 @@ import {
     moveTask,
     reOrderTask,
     initTrelloStore,
-    updateTrelloStore
+    updateTrelloStore,
+    clearBoard
 } from './tasks.actions.js';
 
 // Component styles
@@ -62,6 +63,10 @@ class Tasks extends Component {
                     <div className="mask"
                         onClick={this.toggleCurrentTaskModal}></div>
                 }
+
+                {/* Clear board*/}
+                <button className="clear-board"
+                    onClick={this.clearAllTasks}>Clear Board</button>
 
                 {/* New task modal  */}
                 {
@@ -304,6 +309,33 @@ class Tasks extends Component {
             // Update to persistent store
             updateTrelloStore(this.state);
         });
+    }
+
+    /**
+     * @function
+     * @desc Clears all tasks
+     * @param none
+     * @returns none
+     */
+    clearAllTasks = () => {
+        let flag = clearBoard();
+
+        if (flag) {
+            // User cleared all data. Reset state
+            this.setState({
+                currentTask: {
+                    showModal: false,
+                    listType: 'todo',
+                    index: null,
+                    title: '',
+                    description: '',
+                    priority: 'normal'
+                },
+                todo: [],
+                progress: [],
+                completed: []
+            });
+        }
     }
 
     /**
